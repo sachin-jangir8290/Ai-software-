@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'">
+<title>Nova Browser</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="tabbar">
+    <div id="tabs"></div>
+    <button id="newTab" title="New tab (Ctrl+T)">+</button>
+  </div>
+  <div id="toolbar">
+    <button id="back" title="Back">‹</button>
+    <button id="fwd" title="Forward">›</button>
+    <button id="reload" title="Reload">↻</button>
+    <input id="url" placeholder="Search or enter address — or start with / to ask Nova" spellcheck="false">
+    <button id="toggleAI" class="accent" title="Toggle companion (Ctrl+J)">✦ Nova</button>
+  </div>
+  <div id="main">
+    <div id="views"></div>
+    <aside id="ai">
+      <div id="aiHead">
+        <select id="companion">
+          <option value="assistant">✦ Assistant — general help</option>
+          <option value="research">🔎 Researcher — deep dives & sources</option>
+          <option value="sales">💼 Sales — leads & outreach</option>
+          <option value="writer">✍️ Writer — drafts & rewrites</option>
+          <option value="analyst">📊 Analyst — data & tables</option>
+        </select>
+        <button id="settingsBtn" title="Settings">⚙</button>
+      </div>
+      <div id="quick">
+        <button data-q="Summarize this page in 5 bullet points.">Summarize</button>
+        <button data-q="Extract all key facts, names, numbers and links as a table.">Extract</button>
+        <button data-q="Translate the main content of this page into Hindi.">Translate</button>
+        <button data-q="What actions can I take on this page? Suggest next steps.">Next steps</button>
+        <button data-q="ALLTABS: Compare the content of all my open tabs.">Compare tabs</button>
+      </div>
+      <div id="chat"></div>
+      <form id="askForm">
+        <textarea id="ask" rows="2" placeholder="Ask Nova, or tell it what to do on this page…"></textarea>
+        <button type="submit" class="accent">Send</button>
+      </form>
+      <div id="settings" hidden>
+        <label>Anthropic API key <input id="apiKey" type="password" placeholder="sk-ant-…"></label>
+        <label>Model <input id="model" value="claude-sonnet-5-5"></label>
+        <label><input id="agentMode" type="checkbox" checked> Agent mode (let Nova click, type & navigate)</label>
+        <button id="saveSettings" class="accent">Save</button>
+      </div>
+    </aside>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
